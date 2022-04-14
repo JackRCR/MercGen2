@@ -13,10 +13,10 @@ namespace Driver
 		{
 			// The code provided will print ‘Hello World’ to the console.
 			// Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-			Console.WriteLine("Mercenary Generator by Carefulrogue\n" +
+			Console.WriteLine("Mercenary Generator by Carefulrogue\n\n" +
 				"Version 1.0");
 
-			Console.WriteLine("Hello World!");
+			
 			Console.WriteLine("Market Classification\n"
 				+ "Population		Class		Example\n"
 				+ "0-250		|	VI	|	\n"
@@ -25,9 +25,9 @@ namespace Driver
 				+ "2500-4900	|	III	|	\n"
 				+ "5000-19999	|	II	|	Arkala\n"
 				+ "20000+		|	I	|	Aearvir");
+
+
 			Boolean end = true;
-
-
 			while (end)
 			{
 				Console.WriteLine("Market Size\t\t\t| I\t| II\t| III\t| IV\t| V\t| VI\t| wage(gp)\n" +
