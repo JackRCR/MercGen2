@@ -1,0 +1,16 @@
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.exe
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.deps.json
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.runtimeconfig.json
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.runtimeconfig.dev.json
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.dll
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\ref\MercenaryGenerator.dll
+C:\Users\Jack\git\MercenaryGenerator\bin\Debug\net5.0\MercenaryGenerator.pdb
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.csproj.AssemblyReference.cache
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.AssemblyInfoInputs.cache
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.AssemblyInfo.cs
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.dll
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\ref\MercenaryGenerator.dll
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.pdb
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.genruntimeconfig.cache
