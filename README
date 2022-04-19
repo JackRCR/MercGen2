@@ -1,0 +1,12 @@
+Mercenary Generator 
+by Carefulrogue
+
+
+DATE: 4/18/2022
+-------------------------------------------------------------------------------------------------
+This is a small console utility for generating a perscribed list of mercenaries in a neat and formatted fashion.  All information and numbers based off of the sheet "Hirelings_Mercenaries_Selling_Treasure_Equipment_Purchases_In_Settlements.pdf"
+
+To operate the program, unzip the file and run MercenaryGenerator.exe
+The program takes input in roman numeral (i, ii, iii, iv, v, vi) and (y, n).  NOT CASE SENSITIVE.
+-------------------------------------------------------------------------------------------------
+Will improve with time.

@@ -16,6 +16,7 @@ namespace Driver
 			Console.WriteLine("Mercenary Generator by Carefulrogue\n\n" +
 				"Version 1.0");
 
+			//compile existing code, and then begin investigating how to botify the program.
 			
 			Console.WriteLine("Market Classification\n"
 				+ "Population		Class		Example\n"
