@@ -9,15 +9,17 @@ namespace Driver
 	class Program
 	{
 		public static Random rnd = new Random();
-		static void Main(string[] args)
-		{
-			// The code provided will print ‘Hello World’ to the console.
-			// Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-			Console.WriteLine("Mercenary Generator by Carefulrogue\n\n" +
-				"Version 1.0");
+		static void Main(string[] args)=> new Program().MainAsync();
 
-			//compile existing code, and then begin investigating how to botify the program.
+	public async Task MainAsync()
+	{
+	}
+		/*{//killed main shit.
+			Console.WriteLine("Beginning Mercenary Generator by Carefulrogue\n\nVersion 1.0");
 			
+			
+
+			/*saving this, but maiming the code hereforward.
 			Console.WriteLine("Market Classification\n"
 				+ "Population		Class		Example\n"
 				+ "0-250		|	VI	|	\n"
@@ -120,7 +122,7 @@ namespace Driver
 				}*/
 
 
-
+/*killing yet more
 				int[] output = new int[9];
 
 
