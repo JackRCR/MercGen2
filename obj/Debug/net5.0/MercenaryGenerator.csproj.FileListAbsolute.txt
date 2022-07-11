@@ -1,0 +1,5 @@
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.csproj.AssemblyReference.cache
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.AssemblyInfoInputs.cache
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.AssemblyInfo.cs
+C:\Users\Jack\git\MercenaryGenerator\obj\Debug\net5.0\MercenaryGenerator.csproj.CoreCompileInputs.cache
