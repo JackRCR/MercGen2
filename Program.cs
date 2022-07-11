@@ -15,10 +15,14 @@ namespace Driver
 
 		static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            
+            Console.WriteLine("Standby: Program starting...");
+            new Program.MainAsync();
 
         }//end of Main
+
+		public async Task MainAsync(){
+
+		}//end of MainAsync
 		
 	  }//end of class
 
