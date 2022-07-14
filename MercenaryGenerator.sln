@@ -9,6 +9,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Description = Asks user for market size and generations available mercs.
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C3467ABF-423C-4D1D-BBB5-E86B782411C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
