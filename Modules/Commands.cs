@@ -9,7 +9,7 @@ namespace MercGen2.Modules
 {
 	public class Commands : ModuleBase<SocketCommandContext>
 	{
-		private static Mercenary reff;
+		private static Mercenary reff = new Mercenary();
 
 		
 		
@@ -29,11 +29,8 @@ namespace MercGen2.Modules
 		[Command("generate")]
 		public async Task Basic()
 		{
-
-			//BasicOperation("i");
-
-
-			await ReplyAsync("NOT IMPLEMENTED");
+			
+			await ReplyAsync(reff.BasicOperation("i"));
 
 		}//end of basic THIS NEEDS TO BE REPLACED
 		

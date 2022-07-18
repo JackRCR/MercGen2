@@ -81,13 +81,14 @@ namespace MercGen2
 								new int[] {23},
 								new int[] {15} }
 
-		};//must +1 Each number to be max inclusive!
+			};//must +1 Each number to be max inclusive!
 			int[] output = new int[9];
+			String returnOut="-1";
 			switch (input.ToUpper())
 			{
 				case "I":
 					output = Roller(LoadingDice1[0]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -96,13 +97,13 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 
 				case "II":
 					output = Roller(LoadingDice1[1]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -111,12 +112,12 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 				case "III":
 					output = Roller(LoadingDice1[2]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -125,12 +126,12 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 				case "IV":
 					output = Roller(LoadingDice1[3]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -139,12 +140,12 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 				case "V":
 					output = Roller(LoadingDice1[4]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -153,12 +154,12 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 				case "VI":
 					output = Roller(LoadingDice1[5]);
-					Console.WriteLine("Results\n" +
+					returnOut = "```\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -167,15 +168,15 @@ namespace MercGen2
 						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
 						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
 						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ')
-					);
+						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+					;
 					break;
 				default:
-					Console.WriteLine("Error: Entered value ain't accepted. Exiting...");
+					returnOut = "Error: Entered value ain't accepted. Exiting...";
 					break;
 			}//end of switch
 
-			return "-1";
+			return returnOut;
 
 		}//end of basic
 		public static int[] Roller(int[][] intake)
