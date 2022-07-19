@@ -34,11 +34,10 @@ namespace MercGen2
 				.AddSingleton(_client)
 				.AddSingleton(_commands)
 				.BuildServiceProvider();
-			
-			var token = "OTg1OTg4Njc2MjU5NTQ1MTM4.G_Av"+"cU.bG5FR7wPFl7TVbh0zy0DXVVjnXTIxg37hWE7Bw";
-			//good news!  The discord scraper doesn't catch this.
-			//also FIX THIS YOU MORON
 
+
+			var token = Properties.resources.Token;
+			
 			_client.Log += Log;
 
 			

@@ -27,10 +27,10 @@ namespace MercGen2.Modules
 				"\n-generate [numeral]");
 		}//end of help
 		[Command("generate")]
-		public async Task Basic()
+		public async Task Basic(String type)
 		{
 			
-			await ReplyAsync(reff.BasicOperation("i"));
+			await ReplyAsync(reff.BasicOperation(type));
 
 		}//end of basic THIS NEEDS TO BE REPLACED
 		

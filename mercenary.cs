@@ -88,7 +88,7 @@ namespace MercGen2
 			{
 				case "I":
 					output = Roller(LoadingDice1[0]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -103,7 +103,7 @@ namespace MercGen2
 
 				case "II":
 					output = Roller(LoadingDice1[1]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -117,7 +117,7 @@ namespace MercGen2
 					break;
 				case "III":
 					output = Roller(LoadingDice1[2]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -131,7 +131,7 @@ namespace MercGen2
 					break;
 				case "IV":
 					output = Roller(LoadingDice1[3]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -145,7 +145,7 @@ namespace MercGen2
 					break;
 				case "V":
 					output = Roller(LoadingDice1[4]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -159,7 +159,7 @@ namespace MercGen2
 					break;
 				case "VI":
 					output = Roller(LoadingDice1[5]);
-					returnOut = "```\nResults\n" +
+					returnOut = "```Java\nResults\n" +
 						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
 						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
 						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
@@ -176,7 +176,7 @@ namespace MercGen2
 					break;
 			}//end of switch
 
-			return returnOut;
+			return "Input: "+input+"\n"+returnOut;
 
 		}//end of basic
 		public static int[] Roller(int[][] intake)

@@ -4,3 +4,4 @@ token.txt
 .vscode
 /packages
 /.vs
+*.resx
