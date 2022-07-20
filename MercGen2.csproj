@@ -147,6 +147,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="databasesetup.txt" />
     <Content Include="token.txt" />
   </ItemGroup>
   <ItemGroup>

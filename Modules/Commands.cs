@@ -32,7 +32,13 @@ namespace MercGen2.Modules
 			
 			await ReplyAsync(reff.BasicOperation(type));
 
-		}//end of basic THIS NEEDS TO BE REPLACED
-		
+		}//end of basic with fed input
+		public async Task Basic()
+		{
+
+			await ReplyAsync("NOT IMPLEMENTED");
+
+		}//end of 
+
 	}//end of class Commands : Module Base
 }//end of namespace
