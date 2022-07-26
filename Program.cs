@@ -10,15 +10,13 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace MercGen2
+namespace MercGen2//refactor in the near future for this class.
 {
 	class Program
 	{
 		private DiscordSocketClient _client;
 		private CommandService _commands;
 		private IServiceProvider _services;
-		public static Mercenary generator = new Mercenary();//everyone needs to access this.
-		//I just don't know how to send the ref.
 		
 
 		public static Task Main(string[] args) => new Program().MainAsync();

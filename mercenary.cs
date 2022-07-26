@@ -89,15 +89,15 @@ namespace MercGen2
 				case "I":
 					output = Roller(LoadingDice1[0]);
 					returnOut = "```Java\nResults\n" +
-						"Light Infantry\t" + (output[0] + "").PadLeft(3, ' ') + "\n" +
-						"Slingers\t" + (output[1] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Infantry\t" + (output[2] + "").PadLeft(3, ' ') + "\n" +
-						"Crossbowmen\t" + (output[3] + "").PadLeft(3, ' ') + "\n" +
-						"Bowmen\t\t" + (output[4] + "").PadLeft(3, ' ') + "\n" +
-						"Longbowmen\t" + (output[5] + "").PadLeft(3, ' ') + "\n" +
-						"Light Cavalry\t" + (output[6] + "").PadLeft(3, ' ') + "\n" +
-						"Medium Cavalry\t" + (output[7] + "").PadLeft(3, ' ') + "\n" +
-						"Heavy Cavalry\t" + (output[8] + "").PadLeft(3, ' ') + "\n```"
+						"Light Infantry" + (output[0] + "").PadLeft(30, ' ') + "\n" +
+						"Slingers" + (output[1] + "").PadLeft(30, ' ') + "\n" +
+						"Heavy Infantry" + (output[2] + "").PadLeft(30, ' ') + "\n" +
+						"Crossbowmen" + (output[3] + "").PadLeft(30, ' ') + "\n" +
+						"Bowmen" + (output[4] + "").PadLeft(30, ' ') + "\n" +
+						"Longbowmen" + (output[5] + "").PadLeft(30, ' ') + "\n" +
+						"Light Cavalry" + (output[6] + "").PadLeft(30, ' ') + "\n" +
+						"Medium Cavalry" + (output[7] + "").PadLeft(30, ' ') + "\n" +
+						"Heavy Cavalry" + (output[8] + "").PadLeft(30, ' ') + "\n```"
 					;
 					break;
 
