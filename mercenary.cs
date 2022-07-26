@@ -17,7 +17,7 @@ namespace MercGen2
 		}//end of constructor
 
 
-		public String BasicOperation(String input)//take numeral, output
+		public String Operation(int input)
 		{
 			int[][][] LoadingDice1 = new int[][][]{
 							new int[][] {

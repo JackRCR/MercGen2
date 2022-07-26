@@ -18,16 +18,13 @@ namespace MercGen2
 		{
 			//setup the basic aspects necessary to operate.
 			conn = new NpgsqlConnection(connectionString);
-			
+
 			//does the schema need declaration?
 
 		}//end of constructor
 
-		private void open() => conn.OpenAsync();
-		private void close() => conn.CloseAsync();
-
 		//Item Tables interactions
-		public async Task<Boolean> addItem(String itemName, int quantity, int channelID)
+		public async Task<bool> addItem(String itemName, int quantity, int channelID)
 		{
 			//add/remove are very similar, but left apart for purposes of a audit trail.
 
@@ -48,44 +45,46 @@ namespace MercGen2
 			quantity = Math.Abs(quantity);
 
 			//1.  Open connection
-			open();
-			Boolean output=false;
+			conn.Open();
+			bool output = false;
 
 			//2. Call DB to check item does not already exist.
-			NpgsqlCommand check = new NpgsqlCommand("SELECT channelID, quantity FROM items where '"+
-				itemName+"' AND channelID ="+channelID + ";",conn);
+			NpgsqlCommand check = new NpgsqlCommand("SELECT channelID, quantity FROM items where '" +
+				itemName + "' AND channelID =" + channelID + ";", conn);
 			string retrieved = check.ExecuteReaderAsync().ToString();
 			//3. If: exists update entry adding positive value to existant entry.
-			if (!retrieved.Equals(null))
+			/*if (!retrieved.Equals(null))
 			{
+				
 				NpgsqlCommand cmd = new NpgsqlCommand("UPDATE items " +
-					"set quantity = (quantity + " + quantity + ")" +
-					"WHERE channelID = '"+channelID+"' AND itemName = '"+itemName+"';");
+					"SET quantity = (quantity + " + quantity + ")" +
+					"WHERE channelID = '"+quantity+"' AND itemName = '"+itemName+"';");
 
 			}//end of  if
 
 			//4. Else: create entry
-			else
+			else*/
 			{
 				try
 				{
-					
+
 					NpgsqlCommand cmd = new NpgsqlCommand("insert into items(itemName,quantity,channelID)" +
-						"values('" + itemName + "'," + quantity + "," + channelID + ");", conn);
+						"values('" + itemName + "'," + quantity + "," + 10 + ");", conn);
 					await cmd.ExecuteNonQueryAsync();
 					output = true;
 				}//end of try
 				catch (Exception err)
 				{
-					Console.WriteLine(err);//I don't care what it is, return false and warn the user to warn me.
+					Console.WriteLine(err);
+					//I don't care what it is, return false and warn the user to warn me.
 
 				}//end of catch
 				finally
 				{
-					close();
+					conn.Close();
 				}//end of finally
 			}//end of else
-			
+
 			return output;
 		}//end of addItem
 		public string removeItem()
@@ -94,7 +93,7 @@ namespace MercGen2
 			//selling equipment is what's taking place.
 			return "-0";
 		}//end of removeItem
-		
+
 		public void clearItemTable()
 		{
 			/* ORDER OF OPERATIONS
@@ -110,6 +109,22 @@ namespace MercGen2
 
 
 		//mercenary interactions
+		public void generateMercenaries()
+		{
+			/*ORDER OF OPERATIONS
+			 * 1. Open connection
+			 * 2. CHeck local time against timestamp + interval.  IF local > (timestamp+interval) then proceed.
+			 * Edge cases
+			 * i:   null timestame: roll, and save time with the created values.
+			 * ii:  null interval: roll at will, save anyways.
+			 * Check edge cases first, in if/else chain
+			 * 3. Determine market class
+			 * 4. Roll on table.
+			 * 5. Format results.
+			 * 6. Close connection
+			 * 7. Return results.
+			 */
+		}//end of generateMercenaries
 		public void purchaseMercenaries()
 		{
 			//mercenaries hired are subtracted from the pool.
@@ -133,21 +148,55 @@ namespace MercGen2
 
 
 		//Location Tables Interactions (moreso than just mercs)
-		public void createLocation()
+		public async Task<bool> createLocation(int channelID, String locationName, int popNum, int serverID)
 		{
+			/*ORDER OF OPERATIONS
+			 * 1. Open connection
+			 * 2. Build command
+			 * 3. Insert into database
+			 * 4. Close connection
+			 */
+			//1. Open connection
+			conn.Open();
+			bool output=false;
 
-			//generate a new location
+			try
+			{
+				//2. Build command
+				NpgsqlCommand cmd = new NpgsqlCommand(
+		"insert into locations (channelID,locationName,popnum,datetime,lightinfantry,slingers," +
+		"heavyinfantry,crossbowmen,bowmen,longbowmen,lightcav,mediumcav,heavycav,serverID)" +
+		"values("+channelID+",'"+locationName+"',"+popNum+", null, 0, 0, 0, 0, 0, 0, 0, 0, 0, "+serverID+");", conn);
+				//3. Insert into database.
+				await cmd.ExecuteNonQueryAsync();
+				output = true;
+
+			}//end of try
+			catch (Exception err)
+			{
+				Console.WriteLine(err);
+				output = false;
+			}//end of catch (Exception err)
+
+			finally
+			{
+				//4. Close connection
+				conn.Close();
+
+			}//end of finally
+			return output;
 		}//end of createLocation
 		public void updateLocation()
 		{//uncertain what logic to use to pass values.  I'm thinking string[], string[].  Messy.  But it'll function.
-			
+
+
 			//alter the properties of a table.  Requires everything, for compressability and ease.
-			
+
 		}//end of updateLocation
-		
+
 
 		//Server Table Interactions
-		public void initializeServer(string serverID,string user, string password)
+		public async Task<bool> initializeServer(int serverID, string user, string password)
 		{
 			/* Order of Operations
 			 * 0. Open connection.
@@ -155,17 +204,42 @@ namespace MercGen2
 			 * 2. Insert into database.
 			 * 3. Close connection.
 			 */
+
 			//0. Open connection
-			open();
+			conn.Open();
+			bool output = false;
 
 			//1. Construct string.
-			string x ="insert into servers (serverID,administratorusername, adminastratorpassword) " +
-				"values('" + serverID + "', '" + user + "', '" + password + "');";
-			//2. Insert into database.
-			var cmd = new NpgsqlCommand(x, conn);
+			Console.WriteLine("Guild: " + serverID + " user: " + user + " password: " + password);
+			try
+			{
 
-			//3. Close connection
-			close();
+				NpgsqlCommand cmd = new NpgsqlCommand(
+					"insert into servers (serverID,administratorusername,adminastratorpassword)" +
+					"values(" + serverID + ",'" + user + "','" + password + "');", conn);
+				//2. Insert into database.
+				await cmd.ExecuteNonQueryAsync();
+				output = true;
+
+			}//end of try
+			catch (Exception err)
+			{
+				Console.WriteLine(err);
+			}//end of catch (Exception err)
+
+			finally
+			{
+				//3. Close connection
+				conn.Close();
+
+			}//end of finally
+
+
+
+
+			Console.WriteLine("DON'T FORGET ME");
+			return output;
+
 
 			//servers need to be setup with basic parameters, so access controls may be established.
 			//The bot will do nothing but basic operations from outside proper server setup.
@@ -173,10 +247,25 @@ namespace MercGen2
 		}//end of initializeServer
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		public Boolean checkAuthorization(string password)
 		{
-			string passwordFromDB=null;//this needs to call and pull from the database.
-			if (password==null)//check that value isn't empty
+			string passwordFromDB = null;//this needs to call and pull from the database.
+			if (password == null)//check that value isn't empty
 				return true;
 			if (passwordFromDB.Equals(password))
 				return true;
