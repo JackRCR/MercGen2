@@ -1,68 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MercGen2
+﻿namespace MercGen2
 {
-	class locations
-	{/*
-		private string locationName;
-		private string channel;
-		int popnum;
-		DateTime datetime;
-		private int lightinfantry;
-		private int slingers;
-		private int heavyinfantry;
-		private int crossbowmen;
-		private int bowmen;
-		private int longbowmen;
-		private int lightcav;
-		private int mediumcav;
-		private int heavycav;
-		private string serverID;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using System.Threading.Tasks;
 
-		public locations(string locationName, string serverID)
+	public class Locations
+	{
+		private string locationName;
+		private int channel;
+		private int serverID;
+		private int popnum;
+		private DateTime datetime;
+		private int[] mercenaries = new int[9];
+		
+		public Locations(string unparsedRecall, DateTime datetime, int channel, int serverID)
 		{
-			this.locationName = locationName;
-			channel = null;
+			this.locationName = unparsedRecall;//this is not what I want this to be.
+			this.datetime = datetime;
+
+			this.channel = channel;
+			this.serverID = serverID;
 			popnum = 0;
 			datetime = new DateTime();
 
-			lightinfantry = 0;
-			slingers = 0;
-			heavyinfantry = 0;
-			crossbowmen = 0;
-			bowmen = 0;
-			longbowmen = 0;
-			lightcav = 0;
-			mediumcav = 0;
-			heavycav = 0;
-			this.serverID = serverID;
+			for (int x = 0; x < this.mercenaries.Length; x++)
+			{
+				this.mercenaries[x] = 0;
+			}//end of foreach
+		}//end of constructor UNPAREDRECALL
 
-	}//end of constructor()
-
-		public int deriveClass()
+		public int DeriveClass()
 		{
-			if (popnum >= 20000)
+			if (this.popnum >= 20000)
 				return 1;
-			else if (popnum >= 5000)
+			else if (this.popnum >= 5000)
 				return 2;
-			else if (popnum >= 2500)
+			else if (this.popnum >= 2500)
 				return 3;
-			else if (popnum >= 625)
+			else if (this.popnum >= 625)
 				return 4;
-			else if (popnum >= 250)
+			else if (this.popnum >= 250)
 				return 5;
-			else if (popnum >= 1)
+			else if (this.popnum >= 1)
 				return 6;
 			else
 				return -1;//if there is nobody, it should fail to generate on account of everyone being dead!
-		}
-	
-		*/
+		}//end of deriveClass
 	}//end of class
-
-
 }//end of namespace

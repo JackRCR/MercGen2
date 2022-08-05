@@ -1,0 +1,89 @@
+<StyleCopSettings Version="105">
+  <Analyzers>
+    <Analyzer AnalyzerId="StyleCop.CSharp.SpacingRules">
+      <Rules>
+        <Rule Name="TabsMustNotBeUsed">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="SingleLineCommentsMustBeginWithSingleSpace">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="ClosingCurlyBracketsMustBeSpacedCorrectly">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="ClosingParenthesisMustBeSpacedCorrectly">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="SemicolonsMustBeSpacedCorrectly">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.LayoutRules">
+      <Rules>
+        <Rule Name="CodeMustNotContainMultipleBlankLinesInARow">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="ClosingCurlyBracketsMustNotBePrecededByBlankLine">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="OpeningCurlyBracketsMustNotBePrecededByBlankLine">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="SingleLineCommentsMustNotBeFollowedByBlankLine">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="CurlyBracketsMustNotBeOmitted">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.ReadabilityRules">
+      <Rules>
+        <Rule Name="BlockStatementsMustNotContainEmbeddedComments">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+    <Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules">
+      <Rules>
+        <Rule Name="ElementsMustBeDocumented">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="FileMustHaveHeader">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+      </Rules>
+      <AnalyzerSettings />
+    </Analyzer>
+  </Analyzers>
+</StyleCopSettings>
