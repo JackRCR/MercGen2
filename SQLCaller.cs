@@ -10,7 +10,7 @@
 
 	public class SQLCaller
 	{
-		private string connectionString = "Host=localhost;port=5432;Username=postgres;Password=hoststop;Database=postgres;Search Path=Mercenaries";
+		private string connectionString = "Host=localhost;port=5432;Username=postgres;Password=hoststop;Database=postgres;Search Path=Mercenaries;Log Parameters=true;Include Error Detail=true;";
 		private NpgsqlConnection conn;
 
 		//need to sub in the right info.  I have it here somewhere.
@@ -25,7 +25,7 @@
 		}//end of constructor
 
 		//Item Tables interactions
-		public async Task<bool> AddItem(string itemName, int quantity, int channelID)
+		public async Task<bool> AddItem(string itemName, int quantity, ulong channelID)
 		{
 			//add/remove are very similar, but left apart for purposes of a audit trail.
 
@@ -35,47 +35,55 @@
 			 * 0. Retrieve absolute value of Quantity
 			 * 1. Open connection
 			 * 2. Call DB to check item does not already exist.
+			 *    Cycle connection
 			 * 3. If: exists update entry adding positive value to existant entry.
 			 * 4. Else: create entry.
 			 * 5. Close connection
 			 */
-			
+
 
 			//0. Retrieve absolute value of quantity (case a negative is passed.)
 			quantity = Math.Abs(quantity);
 
 			//1.  Open connection
-			conn.Open();
+			this.conn.Open();
 			bool output = false;
 
 			//2. Call DB to check item does not already exist.
-			NpgsqlCommand check = new NpgsqlCommand("SELECT channelID, quantity FROM items where '" +
-				"itemName = " + itemName + "' AND channelID =" + channelID + ";", 
-				conn);
-
-			NpgsqlDataReader retrieved = await check.ExecuteReaderAsync();
-			//bool debug = retrieved.HasRows;//This should do what I want.
+			String temp1 = $"SELECT * FROM items where \"itemname\" = '{itemName}' AND \"channelid\" ={channelID};";
+			Console.WriteLine(temp1);
+			NpgsqlCommand check = new NpgsqlCommand(temp1, this.conn);
+			
+			var retrieved = await check.ExecuteReaderAsync();
+			
+			Console.WriteLine("Retrival check: "+ retrieved.Rows);
+			this.conn.Close();
+			this.conn.Open();
 			
 			try
 			{
-				bool debug = retrieved.HasRows;
-				//3. If: exists update entry adding positive value to existant entry.
-				if (debug)//If there are MULTIPLE rows, thats an issue, for another day.
-				{//make work, then fix.
-
-					NpgsqlCommand cmd = new NpgsqlCommand("UPDATE items " +
-						"SET quantity = (quantity + " + quantity + ")" +
-						"WHERE channelID = '" + quantity + "' AND itemName = '" + itemName + "';");
-
+				if (retrieved.Rows == 1)//If there are MULTIPLE rows, thats an issue, for another day.
+				{
+					//3. If: exists update entry adding positive value to existant entry.
+					string test = $"UPDATE items SET quantity = (\"quantity\" + {quantity}) WHERE \"channelID\" = {channelID} AND itemName = '{itemName}';";
+					Console.WriteLine(test);
+					NpgsqlCommand cmd = new NpgsqlCommand(test);
+					await cmd.ExecuteNonQueryAsync();
+					Console.WriteLine("Salute 1");
 				}//end of  if
-
+				else if (retrieved.Rows > 1)
+				{
+					output = false;//No way in hell should the code end up here.But if it does... BAD.
+					Console.WriteLine("WARNING MULTIPLE ENTRIES RETRIEVED");
+				}//end of else if
 				//4. Else: create entry
 				else
 				{
-					NpgsqlCommand cmd = new NpgsqlCommand("insert into items(itemName,quantity,channelID)" +
-						"values('" + itemName + "'," + quantity + "," + 10 + ");", 
+					NpgsqlCommand cmd = new NpgsqlCommand(
+						$"insert into items(itemName,quantity,channelID) values('{itemName}',{quantity},{channelID});", 
 						this.conn);
 					await cmd.ExecuteNonQueryAsync();
+					Console.WriteLine("Salute 2");
 				}//end of else
 				output = true;//flag for successful entry.
 			}//end of try
@@ -103,7 +111,20 @@
 			return "-0";
 		}//end of removeItem
 
-		public async Task<bool> ClearItemTable()
+
+		public async Task<String> ViewItems(ulong channelID)
+		{
+			this.conn.Open();
+			NpgsqlCommand check = new NpgsqlCommand($"SELECT * FROM items WHERE channelID = {channelID};",
+				this.conn);
+
+			NpgsqlDataReader retrieval = await check.ExecuteReaderAsync();
+			Console.WriteLine(retrieval.Rows);
+			this.conn.Close();
+			return "```nothing```";
+		}//end of ViewItems
+
+		public bool ClearItemTable()
 		{
 			/* ORDER OF OPERATIONS
 			 * 1. 
@@ -119,7 +140,7 @@
 
 		}//end of clearItemTable
 		//mercenary interactions
-		public async Task<string> GenerateMercenaries()
+		public string GenerateMercenaries()
 		{
 			/*ORDER OF OPERATIONS
 			 * 1. Open connection
@@ -174,7 +195,7 @@
 
 
 		//Location Tables Interactions (moreso than just mercs)
-		public async Task<bool> CreateLocation(int channelID, string locationName, int popNum, int serverID)
+		public async Task<bool> CreateLocation(ulong channelID, string locationName, int popNum, ulong serverID)
 		{
 			/*ORDER OF OPERATIONS
 			 * 1. Open connection
@@ -226,7 +247,7 @@
 
 
 		//Server Table Interactions
-		public async Task<bool> InitializeServer(int serverID, string user, string password)
+		public async Task<bool> InitializeServer(ulong serverID, string user, string password)
 		{
 			/* Order of Operations
 			 * 0. Open connection.

@@ -8,14 +8,14 @@
 
 	public class Locations
 	{
-		private string locationName;
-		private int channel;
-		private int serverID;
-		private int popnum;
-		private DateTime datetime;
-		private int[] mercenaries = new int[9];
-		
-		public Locations(string unparsedRecall, DateTime datetime, int channel, int serverID)
+		public string locationName { get; set; }
+		public ulong channel { get; set; }
+		public ulong serverID { get; set; }
+		public int popnum { get; set; }
+		public DateTime? datetime { get; set; }
+		public int[] mercenaries { get; set; }//this may need to be changed
+
+		public Locations(string unparsedRecall, DateTime datetime, ulong channel, ulong serverID)
 		{
 			this.locationName = unparsedRecall;//this is not what I want this to be.
 			this.datetime = datetime;
@@ -25,6 +25,7 @@
 			popnum = 0;
 			datetime = new DateTime();
 
+			this.mercenaries = new int[9];
 			for (int x = 0; x < this.mercenaries.Length; x++)
 			{
 				this.mercenaries[x] = 0;

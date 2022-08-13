@@ -59,13 +59,18 @@
 		[Command("buy")]
 		public async Task Purchase(string item, int quantity)//not totally sure how the input works.  Let's test it.
 		{
-			//Console.WriteLine("item: "+item+" quantity: "+quantity+" channel: "+(int)Context.Channel.Id);
+			Console.WriteLine("item: "+item+" quantity: "+quantity+" channel: "+Context.Channel.Id);
 
-			
-			if (await sql.AddItem(item, quantity, (int)Context.Channel.Id))
+
+			if (await sql.AddItem(item, quantity, Context.Channel.Id))
+			{
 				await ReplyAsync("Entry added to list");
+			}//end of if
 			else
+			{
 				await ReplyAsync("ERROR: UNABLE TO ACCESS DATABASE.  CONTACT BOT ADMINISTRATOR");
+			}//end of else
+				
 
 
 
@@ -86,7 +91,8 @@
 		public async Task RetrieveList()
 		{
 			//pull list and display in a well formatted manner.
-			//all operations will be in method in SQLcaller.
+			Console.WriteLine("Executing LIST");
+			await sql.ViewItems(Context.Channel.Id);
 			await ReplyAsync("NOT IMPLEMENTED");
 		}//end of list
 		//end of item operations
@@ -95,7 +101,7 @@
 		[Command("foundSettlement")]
 		public async Task CreateLocation(string locationName, int popNum)
 		{
-			if (await sql.CreateLocation((int)Context.Channel.Id, locationName, popNum, (int)Context.Guild.Id))
+			if (await sql.CreateLocation(Context.Channel.Id, locationName, popNum, Context.Guild.Id))
 				await ReplyAsync("Location established.  Mercenaries and equipment can now be hired and tracked here!" +
 					"NOTE TO THE PROGRAMMER, DOESN'T VALIDATE FOR NEGATIVE VALUES");
 			else
@@ -109,9 +115,9 @@
 		public async Task Setup(string user, string password)
 		{
 			Console.WriteLine("entering setup...");
-			Console.WriteLine("Guild: " + (int)Context.Guild.Id + " user: " + user + " password: " + password);
+			Console.WriteLine("Guild: " + Context.Guild.Id + " user: " + user + " password: " + password);
 			
-			if (await sql.InitializeServer((int)Context.Guild.Id, user, password))
+			if (await sql.InitializeServer(Context.Guild.Id, user, password))
 				await ReplyAsync("Server information added to database.  " +
 					"Advanced bot functionalities now available.  " +
 					"Certain functionalities will require uesrname and password authorization in the future." +
@@ -120,7 +126,7 @@
 				await ReplyAsync("Server failed to be registered in database.  " +
 					"Contact bot administrator");
 		}//end of setup
-		 //end of server operation
+		 //end of server operations
 
 
 		[Command("test")]
