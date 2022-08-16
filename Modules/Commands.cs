@@ -9,34 +9,27 @@
 	using Discord.Interactions;
 	using Discord.WebSocket;
 	using Discord;
+	using Microsoft.Extensions.DependencyInjection;
 
+	using MercGen2.Database.Contexts;
 	public class Commands : ModuleBase<SocketCommandContext>
 	{
 		public static Mercenary reff = new Mercenary();
-		private static SQLCaller sql = new SQLCaller();
-		
-		//I don't likle this instantiation, but it'll do for now...
-		
+		private static SQLCaller sql = new SQLCaller();//this needs to be retired out.
+
+		private readonly MercenaryContext _mercenaryContext;
+
+		public Commands (IServiceProvider services)
+		{
+			_mercenaryContext = services.GetRequiredService<MercenaryContext>();
+		}//end of constructor
+
+
 		[Command("ping")]
 		public async Task Ping()
 		{
-			
 			await ReplyAsync("pong");
 		}//end of Ping
-		[Command("help")]
-		public async Task Help()
-		{
-			await ReplyAsync("Available commands:" +
-				"\n-ping" +
-				"\n-help"+
-				"\n-generate [integer]" +
-				"\n-generate" +
-				"\n-buy [item] [qty]" +
-				"\n-sell [item] [qty]" +
-				"\n-list" + 
-				"\n-setup [username] [password]" +
-				"\n-foundSettlement");
-		}//end of help
 
 		//mercenary generator commands
 		[Command("generate")]
@@ -55,6 +48,7 @@
 			await ReplyAsync("NOT IMPLEMENTED");
 		}//end of LocationGeneration
 		
+		/*
 		//item operations
 		[Command("buy")]
 		public async Task Purchase(string item, int quantity)//not totally sure how the input works.  Let's test it.
@@ -84,9 +78,9 @@
 			 * 2. Search for match.
 			 * 3. add to list if not present.
 			 * 4. Remove from count.
-			 */
+			 *
 			await ReplyAsync("NOT IMPLEMENTED");
-		}//end of Sell
+		}//end of Sell*
 		[Command("list")]
 		public async Task RetrieveList()
 		{
@@ -95,7 +89,7 @@
 			await sql.ViewItems(Context.Channel.Id);
 			await ReplyAsync("NOT IMPLEMENTED");
 		}//end of list
-		//end of item operations
+		//end of item operations*
 
 		//location operations
 		[Command("foundSettlement")]
@@ -137,7 +131,7 @@
 			 * Buttons don't work, but there is promise for some advanced opportunities.
 			 * Just need to figure out what those will be.
 			 * 
-			 */
+			 *
 
 			var button = new ButtonBuilder()
 			{
@@ -161,9 +155,7 @@
 			component.WithSelectMenu(menu);
 
 			await ReplyAsync("This is the interaction test.", components: component.Build());
-		}//end of test
-
-
+		}//end of test*/
 
 	}//end of class Commands : Module Base
 }//end of namespace

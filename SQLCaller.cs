@@ -14,7 +14,7 @@
 		private NpgsqlConnection conn;
 
 		//need to sub in the right info.  I have it here somewhere.
-
+		
 		public SQLCaller()
 		{
 			//setup the basic aspects necessary to operate.

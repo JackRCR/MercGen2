@@ -1,6 +1,7 @@
 namespace MercGen2//refactor in the near future for this class.
 {
 	using System;
+	using System.Collections;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Reflection;
@@ -9,6 +10,7 @@ namespace MercGen2//refactor in the near future for this class.
 	using Discord;
 	using Discord.Commands;
 	using Discord.WebSocket;
+	using MercGen2.Database.Contexts;
 	using Microsoft.Extensions.DependencyInjection;
 
 	public class Program
@@ -31,8 +33,26 @@ namespace MercGen2//refactor in the near future for this class.
 			services = new ServiceCollection()
 				.AddSingleton(this.client)
 				.AddSingleton(this.commands)
+				.AddDbContext<MercenaryContext>()
 				.BuildServiceProvider();
 
+			services
+				.AddSingleton(configuration)
+				.AddSingleton(x => new DiscordSocketClient(new DiscordSocketConfig
+				{
+					GatewayIntents = GatewayIntents.All,
+					AlwaysDownloadUsers = true,
+					MessageCacheSize = 200,
+				}))
+				// Get our interactions in here.
+				.AddSingleton(x => new InteractionService(x.GetRequiredService<DiscordSocketClient>()))
+				.AddSingleton<Services.InteractionHandler>()
+				// Get our commands in here.
+				.AddSingleton(x => new CommandService())
+				.AddSingleton<Services.CommandHandler>()
+				// Hook up the databases.
+				.AddDbContext<MercenaryContext>())
+				.Build();
 
 			var token = Properties.resources.Token;
 
