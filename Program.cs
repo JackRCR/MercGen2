@@ -36,23 +36,6 @@ namespace MercGen2//refactor in the near future for this class.
 				.AddDbContext<MercenaryContext>()
 				.BuildServiceProvider();
 
-			services
-				.AddSingleton(configuration)
-				.AddSingleton(x => new DiscordSocketClient(new DiscordSocketConfig
-				{
-					GatewayIntents = GatewayIntents.All,
-					AlwaysDownloadUsers = true,
-					MessageCacheSize = 200,
-				}))
-				// Get our interactions in here.
-				.AddSingleton(x => new InteractionService(x.GetRequiredService<DiscordSocketClient>()))
-				.AddSingleton<Services.InteractionHandler>()
-				// Get our commands in here.
-				.AddSingleton(x => new CommandService())
-				.AddSingleton<Services.CommandHandler>()
-				// Hook up the databases.
-				.AddDbContext<MercenaryContext>())
-				.Build();
 
 			var token = Properties.resources.Token;
 
